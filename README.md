@@ -23,13 +23,11 @@
 
 Built entirely with **Vanilla JavaScript (ES Modules)** and **Vanilla CSS**. No frameworks, no bundlers, zero dependencies. Just clean, modular, and fast web standards.
 
-![Amazon Lite Preview](./path-to-your-screenshot.png) *(Note: Add a screenshot of your live app here)*
+![Amazon Lite Preview](https://amazon-lite-five.vercel.app/favicon.ico) *(A minimal, intentional, and highly performant e-commerce frontend experience)*
 
 ## 🚀 Live Demo
 
-**[👉 Click here to view the live site](YOUR_LIVE_SITE_URL_HERE)** 
-
-*(Note: Replace the URL above once your site is deployed to Vercel, Netlify, or GitHub Pages)*
+**[👉 Click here to view the live site](https://amazon-lite-five.vercel.app/)**
 
 ## ✨ Features
 
@@ -87,10 +85,7 @@ Because this project relies on ES Modules (`<script type="module">`), it must be
 
 ## 🚀 Deployment
 
-Since this is a static site with zero build steps, it can be deployed in seconds to any static hosting provider:
-
-- **Vercel / Netlify:** Just connect your GitHub repository; no build command or output directory configuration is needed.
-- **GitHub Pages:** Go to your repository settings -> Pages -> Select the `main` branch as the source.
+This project is deployed on **Vercel** and is a completely static, serverless frontend. Because it utilizes native ES Modules and modern web standards with zero build step, deployments are practically instantaneous.
 
 ## 🎨 Design Philosophy (Calm Commerce)
 
