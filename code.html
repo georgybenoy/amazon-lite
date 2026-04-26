@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amazon Lite – Calm Commerce Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#8a5100",
+                      "surface-dim": "#d9dadb",
+                      "secondary-fixed": "#dce2f7",
+                      "surface": "#f8f9fa",
+                      "primary-container": "#ff9900",
+                      "on-primary-container": "#653a00",
+                      "on-primary-fixed": "#2c1600",
+                      "on-secondary": "#ffffff",
+                      "on-surface-variant": "#554434",
+                      "on-tertiary-container": "#004965",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#d9dff5",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#001e2c",
+                      "on-surface": "#191c1d",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#dbc2ad",
+                      "inverse-on-surface": "#f0f1f2",
+                      "tertiary-fixed": "#c4e7ff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-secondary-fixed": "#141b2b",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary-container": "#5c6274",
+                      "surface-container-low": "#f3f4f5",
+                      "primary-fixed": "#ffdcbd",
+                      "secondary-fixed-dim": "#c0c6db",
+                      "inverse-primary": "#ffb86f",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#edeeef",
+                      "secondary": "#575e70",
+                      "background": "#f8f9fa",
+                      "tertiary": "#00668a",
+                      "on-tertiary-fixed-variant": "#004c69",
+                      "outline": "#887361",
+                      "surface-bright": "#f8f9fa",
+                      "on-secondary-fixed-variant": "#404758",
+                      "tertiary-container": "#04beff",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-fixed-variant": "#693c00",
+                      "primary-fixed-dim": "#ffb86f",
+                      "surface-variant": "#e1e3e4",
+                      "primary": "#8a5100",
+                      "tertiary-fixed-dim": "#7cd0ff",
+                      "on-background": "#191c1d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "container-max": "1280px",
+                      "unit": "4px",
+                      "margin": "32px",
+                      "gutter": "24px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "xxl": "80px"
+              },
+              "fontFamily": {
+                      "h1": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "h2": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "h3": ["Inter"],
+                      "button": ["Inter"]
+              },
+              "fontSize": {
+                      "h1": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h2": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                      "h3": ["24px", {"lineHeight": "1.4", "letterSpacing": "0", "fontWeight": "600"}],
+                      "button": ["15px", {"lineHeight": "1", "letterSpacing": "0", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shrink-on-scroll {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .focus-mode-active .focus-suppress {
+            opacity: 0.1;
+            filter: grayscale(1);
+            pointer-events: none;
+            transition: all 0.6s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-none transition-all duration-300 ease-in-out shrink-on-scroll">
+<div class="flex items-center justify-between px-8 h-16 max-w-screen-2xl mx-auto">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="text-xl font-bold tracking-tighter text-gray-900 dark:text-white" href="#">Amazon Lite</a>
+<!-- Navigation Links (Web) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-['Inter'] text-sm tracking-tight text-gray-900 dark:text-white border-b-2 border-[#FF9900] pb-1 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" href="#">Categories</a>
+<a class="font-['Inter'] text-sm tracking-tight text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" href="#">Deals</a>
+<button class="flex items-center gap-2 font-['Inter'] text-sm tracking-tight text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" id="focus-toggle">
+<span class="material-symbols-outlined text-[18px]">visibility_off</span>
+                    Focus Mode
+                </button>
+</nav>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-8 focus-suppress">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#FF9900] transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-transparent focus:border-outline focus:ring-0 rounded-full py-2 pl-10 pr-4 text-body-sm transition-all" placeholder="Search with intent..." type="text"/>
+</div>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center gap-5">
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-[#FF9900] transition-colors">dark_mode</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-[#FF9900] transition-colors">person</button>
+<button class="material-symbols-outlined text-gray-600 dark:text-gray-300 hover:text-[#FF9900] transition-colors relative">
+                shopping_cart
+                <span class="absolute -top-1 -right-1 bg-primary-container text-[10px] font-bold text-on-primary-container w-4 h-4 rounded-full flex items-center justify-center">0</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center overflow-hidden bg-white">
+<div class="absolute inset-0 z-0">
+<img alt="Minimalist Product" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiPkk1nOspIaTgnAi_hfUzi6mwagnpKnnBHC8IqJ7M33pxWFA5ogudZJnCWf_JZZWvkBBg-o-0a2gvKN-A8s3gsRAppTANCSl2zeRGxoHLpH9OB3Z53J4ZtVrh0fueV4DpLX9Xgd05X6AC5hR86tPDl1vFBX_X4OIh5axNFTCiXrzdAue88_wOSPvLBSBE2uG3qU14DMXdotJibpJX4GXDZvVd_yYVO5vH7SMLBxworrv42eDc5Qn25xTLk3CsbkH4lhREpUtIsoR2"/>
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-screen-2xl mx-auto px-8 w-full">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-surface-tint mb-4 block">Summer Collections</span>
+<h1 class="font-h1 text-h1 text-on-surface mb-6">Intentional Living. Simple Choices.</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-8">Discover a curated selection of essentials designed to bring clarity to your daily life.</p>
+<div class="flex items-center gap-4">
+<button class="bg-primary-container text-white px-8 py-4 rounded-xl font-button text-button hover:shadow-lg transition-all active:scale-95">Explore All</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Section -->
+<section class="py-xl max-w-screen-2xl mx-auto px-8 focus-suppress">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="font-h3 text-h3">Curated Categories</h2>
+<a class="text-primary font-button text-body-sm hover:underline" href="#">View all</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-md">
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-sm group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">smartphone</span>
+<span class="font-body-sm text-on-surface">Electronics</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-sm group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">checkroom</span>
+<span class="font-body-sm text-on-surface">Fashion</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-sm group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">chair</span>
+<span class="font-body-sm text-on-surface">Home</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-sm group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">fitness_center</span>
+<span class="font-body-sm text-on-surface">Fitness</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-square rounded-xl bg-surface-container-low flex flex-col items-center justify-center gap-sm group-hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px]">palette</span>
+<span class="font-body-sm text-on-surface">Lifestyle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Grid -->
+<section class="py-xl bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-lg">
+<h2 class="font-h2 text-h2 mb-xs">Essentials for You</h2>
+<p class="text-secondary font-body-md">Hand-picked items that align with your lifestyle.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- 1. Wireless Noise Cancelling Headphones -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Wireless Noise Cancelling Headphones" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBJTmwl7JyD9TMvv68k3WvoYWeUBO9PmkdrP9JcbW9MZGpVOdFqZA_ArdgANjBw1riuJjwPZ_CugdUkjj1pCsRp63cQ2iXa3GxRVmTpNvV7CV92szJVAW5Ctz-_qbb3XxJz4zVtnomqpTDlF-5SNSD62xEpx0gtQPZBfcmOSTZJFy-dk9DL8owPS4M-wqh3Ae3PZdRxMTtrnPrWB-4DEOM7qLhMAYPLRjRoeyyoFw5QVnTO-dfSg6_MryubwDbUAPD7zNuh79DWJUs"/>
+<span class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Best Seller</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Wireless Headphones</h3>
+<p class="text-body-sm text-secondary">Electronics</p>
+</div>
+<span class="font-semibold text-primary">$59.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 2. Minimalist Analog Watch -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Minimalist Analog Watch" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl10reLaHg-T5d64P62-w5q9CR1GlEBPJ0ir2DyIX9tV1TmqOtEq0sMcVOioDR4GQqK0-MSfWXoKiv0mYtaKREwgsd61Q-g2OKyf41zVVwnCkJQnxo6-6fGqcExWgP0pAFD8uF32UOvkB26iy2Ymlksaj28uJbAYkrgv6-mCHQJEJnPm6dGiQzwCfBBGSaANsYrcDOvJvmqdzzO-3Sfq-4pUDIhEueVLcAYhQJcfMxYWuLhax7N_H1j6AcPS68UPtHzZJgw4YOJBig"/>
+<span class="absolute top-4 left-4 bg-error-container text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Limited Deal</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Analog Watch</h3>
+<p class="text-body-sm text-secondary">Fashion</p>
+</div>
+<span class="font-semibold text-primary">$19.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 3. Smart LED TV 43-inch 4K -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Smart LED TV" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFw1otYKEubGHaUORA59_juJUBC_wWoJ59Rcw_PtbqJsH-IrxxwbUrDm-hQwoWFh-n4aSeRQRt6jrJ9gZdYsRzDqq5GBHTYRS6IfzI9mEfijt8pJ53QxR4XU0b_fCrAE00_5lBAN9b_uC8f97snU4htX2F-nA4WPCoJeZoOeBBY6MUF39Ya7tb3GelFn38umu_h52tSFs77hx4bEddls5k4OuEjs0CqYw1cYFQn-xJDah6whrtOCtLup7gwJgG0RvBQfvqQDDwnc-y"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">43" 4K Smart TV</h3>
+<p class="text-body-sm text-secondary">Electronics</p>
+</div>
+<span class="font-semibold text-primary">$289.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 4. Ergonomic Office Chair -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Ergonomic Office Chair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5e4bZJeNyqx3QgXbR4R4x-mFnKYubxCVYsqMLhrOmkoQLselRp7wGr03nRGRAAmcYhrrjzS4mjdeRoc_sArMkJc3pCNrujI6IGiY6OsJqumu02411bUgtNsAKjGK3h2YQ1qEuQu_Q4ln1RCzwcOTF1d5abvBCD7OFgliVq4Y4JBTSHySvZlYJWaLhylltVCsay8ktWGrIOd3ywp0wNqqcTEMf7LpSZBnR_HIDNay1C1BVpzbtuPNNTU4rp4gycCSVkhyTju5rKCND"/>
+<span class="absolute top-4 left-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Top Rated</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Office Chair</h3>
+<p class="text-body-sm text-secondary">Home</p>
+</div>
+<span class="font-semibold text-primary">$74.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 5. Running Shoes for Men -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Running Shoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8sHLFETud6E-SkBs7WCKG4yyGxrSyUBCYpZQnP7m1WhpmUeF9uW49Kzezp4ejDP_19LuNpbdjyel0tUmxMfsqpFD29jiR1tfdJBACZZpZ9yZpeDwMnmNOO0w--55D-OybL411MtfZ_KKC6To3qzQFOn_JF-hvTyMTWvzL_5IlWuWckoRL2c2sKR2Tsv70KiQBibKWIntI0amBi2dizt9-I_AGg6VOWvgMBJqQ3_fDB6KQuJywiKafPjEQ6rOyI1U63V46iyys7YKM"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Running Shoes</h3>
+<p class="text-body-sm text-secondary">Fashion</p>
+</div>
+<span class="font-semibold text-primary">$24.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 6. Bluetooth Portable Speaker -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Bluetooth Speaker" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAINEit1aQcTbQZL1FCFkm08V2OdU-vGYzzvkynU36iv2A1xwEiB8adO83h2_lSK-doqVtNMkg5jpSqfTzlVHw3A56KeRG5MUope99uF4lfOuKbKKxD9CFD72YoOH63YKYG1m78lq4Xf61ifkRIZSfZUt3jP_6IigxQpA6ONKbmeu_03bFSmSQ8Tmjak0Q6zad78kHCQw6O0B5p713uS15P2c3fESCfh4m8sj29D_6IZrRzAraCCsdumFqUyy4veAFDJWzbAGrr0EvM"/>
+<span class="absolute top-4 left-4 bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Hot Deal</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Portable Speaker</h3>
+<p class="text-body-sm text-secondary">Electronics</p>
+</div>
+<span class="font-semibold text-primary">$14.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 7. Cotton Bedsheet Set -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Cotton Bedsheet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcetgFGCtd1kE0uXFTRrg1NS0DbNo38ZiiI2F5FmDGBTqJM1UxTPgrB-j33UfevGqozxluTWmO-ek1_cRuqYCwpdbtOYaeDxm-IYxhfL-RQntGi3J_TsleUxIEhZLprMKT4N3i-Q7RcnC5paUrAyHr37_delQsuOO2nNlhOowEYuqDam5NlUAOs2yDitH_OaF6WUy2-JXBD5E9jg14aBfW2Z37Y5TzNfyL7adqwq0Rt0HxA7nRZRmOQAEdeJHOn7aVFpB9mz_PQ0yr"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Cotton Bedsheet</h3>
+<p class="text-body-sm text-secondary">Home</p>
+</div>
+<span class="font-semibold text-primary">$12.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 8. Gaming Mechanical Keyboard -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Mechanical Keyboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1r1CColrw5k1k10qcVZhtbK0P-11hYTI_ZaBpzITCNUN_48AtowoFfaOEXJlqtHKepN3waJJScMX6hP6_fGRCS6RZ2Qs5faS8tAzZv4aBvN06Hlj2-jrqTj8I5P6I6fW9GvCGYfC3XbQhkewiCw5BiqQ_YBIkjZqTB3LRmorcam072Q5cvDCepfz6fyd2mDCilAeJCElevk0hSFkBuEFEMxh1mimw-2k8lSL9GSz6vE5ojarnv8DAmBQepA2abyRZOS2YFjMUiMCs"/>
+<span class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Best Seller</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Gaming Keyboard</h3>
+<p class="text-body-sm text-secondary">Electronics</p>
+</div>
+<span class="font-semibold text-primary">$34.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 9. Air Fryer 4L -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Air Fryer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7fskTMw92cAMmo4b_XYeuoUhqqOo7fjuci_TPyT8tIjIQD1oKTEBbLP5AcPXtubdnTAeX5pVB2h6-6NcPPSyUq6Ev3NNkdKeGa0Me9gcPjggoXCANOCKyWeOVqeYlOtrLpMsispn8U14g69hk4RiGytw8rpmVtlKalmVZX8k-9PA5eK7JMPw9VbDruzmw012QkFAamxW3-SoiBwRr1gWqxOG_oo9W-PKcilpzgzuM_Dkf23gcHQWXARbhPcXSb1-AMbUhqUatahJq"/>
+<span class="absolute top-4 left-4 bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Trending</span>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Air Fryer 4L</h3>
+<p class="text-body-sm text-secondary">Home</p>
+</div>
+<span class="font-semibold text-primary">$49.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+<!-- 10. Classic Sunglasses -->
+<article class="group bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300">
+<div class="aspect-[4/5] overflow-hidden relative bg-gray-50">
+<img alt="Classic Sunglasses" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQzmV72eJ2ZMr6GX9rWrmw7dWBLzDFdYflc6GS8qd_ppAgEKfRhQUVQLIuxMYvrwzApIvMCUexGHl4GoXTDDalmAtTaYpCbshfZUC8WSobnCH5E8IHubsW91xMKKK2aC9NU81siFJZmnCnm2no2HWN-ogvvH1Yeg-r7kglPSx9ccM0XZdGAzk6ttRH1jpiDazzMS5-Cuz63lw2_mh964hbnVhswd01yZ0DJfXmnVC-KEBj7tsEkn8ha9wTqUZikola8gYpunh84QHx"/>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-body-md font-semibold text-on-surface">Classic Sunglasses</h3>
+<p class="text-body-sm text-secondary">Fashion</p>
+</div>
+<span class="font-semibold text-primary">$8.99</span>
+</div>
+<button class="w-full bg-on-surface text-white py-3 rounded-lg font-button text-body-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> Add to Cart
+                        </button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="py-xxl max-w-screen-2xl mx-auto px-8 focus-suppress">
+<div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-md h-[600px]">
+<div class="md:col-span-2 md:row-span-2 bg-[#FF9900]/5 rounded-3xl p-xl flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-12 left-12 z-10 max-w-sm">
+<h2 class="font-h1 text-h2 mb-md">Sustainability first. Always.</h2>
+<p class="text-secondary font-body-md mb-lg">Our Climate Pledge Friendly badge ensures you're making choices that support a healthier planet.</p>
+<button class="text-on-surface font-semibold flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Our Commitment <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<img alt="Greenery" class="absolute right-[-10%] bottom-[-10%] w-2/3 h-2/3 object-contain opacity-20 group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw5EBiS25N4DeY-QHw15j3J8J7skBXcH_mGbj81ofx1HUcXm-X3GzxI8wQZc_XPl6UA8TTNopjQoO8Dis6HKTVGGbv4Mt4mwUkTX_a55XhgWseCjEVMeR8Qf8c3rff0TqvDCN0omGevoTLHTQL32iaGHLRL2hAvXVdhgKqPd6tg4fU_XS4KhKeiFZDE7wEMrvQgnEHzLw9E45WHzfMjXYgl5C6oo-4NWe5BWzMdYC4nOX9SZ8vaU9ZUVC-POqsLZqBfyNNm4vaZ81V"/>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-lg flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-[40px]">bolt</span>
+<div>
+<h3 class="font-h3 text-body-lg font-bold">Fast as Light</h3>
+<p class="text-body-sm text-secondary">Next-day delivery, refined for efficiency.</p>
+</div>
+</div>
+<div class="bg-on-surface rounded-3xl p-lg flex flex-col justify-between text-white">
+<span class="material-symbols-outlined text-[#FF9900] text-[40px]">shield</span>
+<div>
+<h3 class="font-h3 text-body-lg font-bold">Safe Passage</h3>
+<p class="text-body-sm text-gray-400">Guaranteed protection for every purchase.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-20 px-8 border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-950">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-screen-xl mx-auto opacity-80 hover:opacity-100 transition-opacity">
+<div class="text-gray-400 dark:text-gray-500 font-['Inter'] text-xs uppercase tracking-widest">
+            © 2024 Amazon Lite. Designed for Calm Commerce.
+        </div>
+<div class="flex gap-12">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 hover:text-[#FF9900] transition-colors" href="#">Accessibility</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 hover:text-[#FF9900] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-gray-400 dark:text-gray-500 hover:text-[#FF9900] transition-colors" href="#">Sustainability</a>
+</div>
+</div>
+</footer>
+<!-- FAB -->
+<div class="fixed bottom-8 right-8 z-40 focus-suppress">
+<button class="bg-on-surface text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help</span>
+</button>
+</div>
+<script>
+    // Shrink Header on Scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.remove('h-16');
+            header.classList.add('h-14', 'shadow-md');
+        } else {
+            header.classList.add('h-16');
+            header.classList.remove('h-14', 'shadow-md');
+        }
+    });
+
+    // Focus Mode Toggle
+    const focusBtn = document.getElementById('focus-toggle');
+    focusBtn.addEventListener('click', () => {
+        document.body.classList.toggle('focus-mode-active');
+        const icon = focusBtn.querySelector('.material-symbols-outlined');
+        if (document.body.classList.contains('focus-mode-active')) {
+            icon.innerText = 'visibility';
+            focusBtn.classList.add('text-primary');
+        } else {
+            icon.innerText = 'visibility_off';
+            focusBtn.classList.remove('text-primary');
+        }
+    });
+</script>
+</body></html>

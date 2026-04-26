@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Amazon Lite — A calm, minimal e-commerce experience. Curated products, intentional design." />
+  <meta name="theme-color" content="#f8f9fa" />
+  <title>Amazon Lite – Calm Commerce Experience</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Material Symbols -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Design System Styles -->
+  <link rel="stylesheet" href="./src/styles/globals.css" />
+
+  <style>
+    /* Material icon defaults */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body>
+  <!-- Accessibility: skip-to-content link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- App mount point — navbar is prepended above this by main.js -->
+  <div id="app">
+    <!-- Initial loading skeleton (shown before JS hydrates) -->
+    <div style="padding-top:64px">
+      <div style="height:600px; background:var(--color-surface-container-low); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; opacity:0.5;">
+          <div class="material-symbols-outlined" style="font-size:48px; color:var(--color-primary-container); animation: pulse 1.5s infinite">storefront</div>
+          <p style="margin-top:16px; font-size:14px; color:var(--color-secondary);">Loading Calm Commerce...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.05); }
+    }
+  </style>
+
+  <!-- App Bootstrap (ES Modules) -->
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
